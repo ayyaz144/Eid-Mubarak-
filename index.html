@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak!</title>
+    
+    <!-- Google Fonts for Luxury Feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS variables for a consistent and luxurious theme */
+        :root {
+            --bg-color: #0c142c; /* Deep Navy Blue */
+            --gold-color: #FFD700;
+            --text-color: #f0f4f8;
+            --card-bg-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Basic Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Particle JS Background - The Magic! */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Main Container for Centering Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Header Styling */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--gold-color);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 0 0 5px rgba(255, 215, 0, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-down {
+            font-weight: 300;
+            color: var(--gold-color);
+            animation: bounce 2s infinite;
+        }
+
+        /* Wishes Section */
+        .wishes-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--gold-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .wish-card {
+            background: var(--card-bg-color);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; /* Initially hidden for scroll animation */
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .wish-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* This class will be added by JavaScript on scroll */
+        .wish-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wish-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .wish-card p {
+            font-weight: 300;
+        }
+        
+        /* Visual Element - Lanterns */
+        .visual-divider {
+            margin: 4rem 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        
+        .visual-divider.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .lanterns {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(0 0 15px var(--gold-color));
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem 0;
+            font-weight: 300;
+        }
+        
+        .final-greeting {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-8px);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- The Magical Particle Background -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <!-- Main Hero Section -->
+        <header>
+            <h1 class="main-title">Eid Mubarak</h1>
+            <p class="subtitle">To all my wonderful friends and family</p>
+            <p class="scroll-down">↓</p>
+        </header>
+
+        <!-- Main Content with Wishes -->
+        <main>
+            <section class="wishes-section">
+                <h2 class="section-title">My Wishes For You</h2>
+                <div class="wishes-grid">
+                    
+                    <div class="wish-card">
+                        <div class="emoji">💖</div>
+                        <p>May your heart be filled with boundless joy and your life with endless blessings. Eid Mubarak!</p>
+                    </div>
+
+                    <div class="wish-card">
+                        <div class="emoji">✨</div>
+                        <p>Wishing you a sparkling Eid that brings with it new opportunities and successes. Stay blessed!</p>
+                    </div>
+
+                    <div class="wish-card">
+                        <div class="emoji">🐑</div>
+                        <p>May the spirit of sacrifice and devotion of Eid al-Adha fill your soul with peace. Happy Eid!</p>
+                    </div>
+
+                    <div class="wish-card">
+                        <div class="emoji">🌙</div>
+                        <p>On this holy occasion, I wish that the light of the moon illuminates your path towards happiness and prosperity.</p>
+                    </div>
+
+                    <div class="wish-card">
+                        <div class="emoji">🕌</div>
+                        <p>May Allah accept all your prayers and forgive all your faults. Eid Mubarak to you and your family!</p>
+                    </div>
+                    
+                    <div class="wish-card">
+                        <div class="emoji">🤗</div>
+                        <p>Sending you warm wishes and a big hug on this beautiful day. May our bond of friendship grow stronger.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="visual-divider">
+                <svg class="lanterns" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250">
+                    <defs><g id="lantern">
+                        <path d="M15,50 A15,15 0 0 1 85,50 Z" fill="url(#grad)" stroke="#FFD700" stroke-width="2"/>
+                        <rect x="35" y="0" width="30" height="15" fill="#FFD700"/>
+                        <rect x="45" y="15" width="10" height="35" fill="#FFD700"/>
+                        <path d="M25,50 Q50,70 75,50" stroke="#FFD700" stroke-width="2" fill="none"/>
+                        <path d="M25,55 Q50,75 75,55" stroke="#FFD700" stroke-width="2" fill="none"/>
+                        <rect x="40" y="55" width="20" height="15" fill="#FFD700"/>
+                        <circle cx="50" cy="80" r="10" fill="url(#grad)"/>
+                    </g>
+                    <radialGradient id="grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color:rgb(255,255,150);stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(255,215,0);stop-opacity:1" />
+                    </radialGradient></defs>
+                    <path d="M10,10 C100,50 200,0 320,50 S540,50 630,10" stroke="#FFD700" stroke-width="1.5" fill="none" opacity="0.7"/>
+                    <use href="#lantern" transform="translate(50 60) scale(1)"/>
+                    <use href="#lantern" transform="translate(270 90) scale(1.2)"/>
+                    <use href="#lantern" transform="translate(490 50) scale(0.9)"/>
+                </svg>
+            </div>
+            
+            <footer>
+                <p class="final-greeting">Taqabbalallahu Minna Wa Minkum</p>
+                <p>(May Allah accept it from us and from you)</p>
+                <br>
+                <p>With Lots of Love & Prayers,</p>
+                <p>Your Friend ❤️</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <!-- Particle.js for the background animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <script>
+        // --- Particle.js Configuration ---
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 60, // Number of particles
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#FFD700" // Gold color for particles
+                },
+                "shape": {
+                    "type": "star", // Shape of particles
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                },
+                "line_linked": {
+                    "enable": false, // No lines connecting particles
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1, // Slow and gentle movement
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "bubble" // Particles grow on hover
+                    },
+                    "onclick": {
+                        "enable": false, // No action on click
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "bubble": {
+                        "distance": 100,
+                        "size": 6,
+                        "duration": 2,
+                        "opacity": 1
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // --- Scroll Animation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: stop observing once it's visible to save resources
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Select all elements you want to animate on scroll
+            const animatedElements = document.querySelectorAll('.wish-card, .visual-divider');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+    </script>
+</body>
+</html>
